@@ -8,8 +8,6 @@ var pdfjsLib = window['pdfjs-dist/build/pdf'];
 pdfjsLib.GlobalWorkerOptions.workerSrc = 'pdfjs-dist/build/pdf.worker.js';
 // Asynchronous download do PDF
 var loadingTask = pdfjsLib.getDocument(url);
-var pageNumber = 1;
-var texto ='';
 
 function renderizaPagina(pageNumber) {
 
@@ -47,11 +45,13 @@ function renderizaPagina(pageNumber) {
 
 }
 
+var pageNumber = 1;
+//mostra a primeira página do arquivo pdf
 pdfjsLib.getDocument(url).promise.then(function(pdfDoc_) {
     pdfDoc = pdfDoc_;
     document.getElementById('page_count').textContent = pdfDoc.numPages;
     document.getElementById('page_num').textContent = pageNumber;  
  
-    // Chamando a renderizacao da página
+    // Chamando a renderizacao da página 1
     renderizaPagina(pageNumber);
   });
